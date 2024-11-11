@@ -1,0 +1,20 @@
+Parent 3
+Child 1
+
+Final - Child -> 4
+As we cant initialise all 4 attributes in the child class,
+from the child class itself, we need to call both parent
+and child constructor.
+
+Initialisation is always top -> down, that means
+Initialise parent then Initialise Child
+
+Call to parent cons -> Call to child cons
+
+
+The class that has the attributes owns the responsibility
+to initialise them. IE, the constructor of that class would
+initialise the attributes for that class.
+
+Logic of initialisation of attributes always lies within
+the same class.

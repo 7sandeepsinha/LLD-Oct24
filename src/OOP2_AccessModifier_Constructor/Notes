@@ -1,0 +1,5 @@
+1. Public, Private, Protected and Default
+Public -> Everywhere
+Private -> Only within class and nowhere else
+Default -> [Package Private] -> only inside the same package
+Protected -> Same package and another package if child class
