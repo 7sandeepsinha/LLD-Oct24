@@ -1,10 +1,7 @@
 package multithreading;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -52,9 +49,11 @@ public class Main {
 
          */
 
+        ReentrantLock mutex = new ReentrantLock();
+
         Count count = new Count();
-        Adder adder = new Adder(count);
-        Substractor substractor = new Substractor(count);
+        Adder adder = new Adder(count, mutex);
+        Substractor substractor = new Substractor(count, mutex);
 
         Thread adderThread = new Thread(adder);
         Thread subsThread = new Thread(substractor);
@@ -74,4 +73,9 @@ public class Main {
 
         Thread A -> go and add something and give me the result
         Thread B -> go and multiply something and give me the result
+ */
+
+/*
+    ConcurrentHashMap
+
  */
