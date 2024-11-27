@@ -1,0 +1,9 @@
+Lambda Usage Decision -
+
+1. If implementing interface is a FI
+2. If the implementation that we are going to write is specific to use-case and does not
+have reusability.
+3. () --- method parameter structure
+4. () -> ---- -> implies implementation and lambda invoking anonymous class obj creation
+5. () -> { method body }
+6. Anonymous class implementation for FI is Lambda
