@@ -1,12 +1,7 @@
 package javaAdvancedConcepts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-
-
         //GENERICS DEMO
         /*
         Animal animal = new Animal(10);
@@ -95,6 +90,9 @@ public class Main {
         t4.start();
 
          */
+
+        ///Lambda and Streams demo
+        /*
         MathOperation mathOprAddition = (a, b) -> a+b;
         MathOperation mathOprSubtraction = (a, b) -> a-b;
 
@@ -122,6 +120,20 @@ public class Main {
             return (int)Math.pow(a, result);
         });
         calculate(10,15, mathOperationModAndPower);
+
+         */
+        try {
+            Calculator c = new Calculator();
+            c.divide(10,10);
+            User u1 = new User(1, "A", 100);
+            User u2 = new User(2, "B", 0);
+            c.calculateWealth(u1, u2);
+            c.calculate(10, 0);
+        } catch (Exception ex){
+            ex.printStackTrace();
+            System.out.println("something went wrong");
+        }
+        // main -> calculate -> divide
     }
 
     public static void calculate(int a, int b, MathOperation mathOperationObj){
