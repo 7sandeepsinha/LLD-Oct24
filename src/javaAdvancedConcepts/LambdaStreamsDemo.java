@@ -31,7 +31,13 @@ public class LambdaStreamsDemo {
                 .map(n -> n*4.5) // functions -> takes input[Integer] and returns output[Double]
                 .forEach(n -> System.out.print(n + " "));
          */
+
+
         List<Integer> integers = List.of(1,2,3,4,5,6,7,8);
+        int sum = integers.stream().mapToInt(n -> n*n).sum();
+        System.out.println(sum);
+
+
         List<String> strings  = List.of("A", "B", "C");
         List<Double> doubles = Stream.generate(() -> Math.random()).limit(5).collect(Collectors.toList());
         printList(integers);
@@ -39,6 +45,8 @@ public class LambdaStreamsDemo {
         sumOfListData(integers);
         sumOfListData(doubles);
     }
+
+
 
     public static void printList(List<?> list){ // wildcard generic -- unbounded generic, no boundations
         for(Object x : list){
