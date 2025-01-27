@@ -58,4 +58,10 @@ public class GameService {
             return GameState.IN_PROGRESS;
         }
     }
+
+    public Game undo(int moves, Game game){
+        //logic
+        winnerCheckStrategy.updateBoardDetails(game.getBoard());
+        return null;
+    }
 }

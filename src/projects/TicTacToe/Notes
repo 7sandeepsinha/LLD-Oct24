@@ -26,3 +26,13 @@ Homework ->
 5. Convert Game class into Game builder.
 
 31st JAN -> DONE
+
+
+
+Requirement gathering -> Class diagram
+Step 1 -> Code the models
+Step 2 -> Methods in the controller
+Step 3 -> Controllers only contain validations for user input, and on business logic.
+          So we put business logic in respective service classes.
+Step 4 -> For some business logic, strategy design pattern, so wrote them inside service package
+Step 5 -> using the methods from controller, we complete the game running logic.

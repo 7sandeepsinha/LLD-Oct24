@@ -69,7 +69,8 @@ public class GameController {
     }
 
     public Game undo(int moves, Game game){
-        return null;
+        //TODO: add validations for moves
+        return gameService.undo(moves, game);
     }
 
     public Game startGame(Game game){
@@ -77,6 +78,7 @@ public class GameController {
     }
 
     public void replayGame(Game game){
+        //actual business logic in gameService class
     }
 
     public void displayBoard(Game game){

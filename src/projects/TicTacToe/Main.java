@@ -3,7 +3,6 @@ package projects.TicTacToe;
 import projects.TicTacToe.controller.GameController;
 import projects.TicTacToe.exception.GameDrawnException;
 import projects.TicTacToe.exception.InvalidCellException;
-import projects.TicTacToe.model.Board;
 import projects.TicTacToe.model.Game;
 import projects.TicTacToe.model.Move;
 import projects.TicTacToe.model.Player;
