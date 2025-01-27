@@ -11,7 +11,7 @@ public class Game {
     private Player currentPlayer;
     private Player winner;
     private List<Move> moves;
-    private List<Board> boards;
+    private List<Board> boardState;
 
     public Board getBoard() {
         return board;
@@ -61,11 +61,11 @@ public class Game {
         this.moves = moves;
     }
 
-    public List<Board> getBoards() {
-        return boards;
+    public List<Board> getBoardState() {
+        return boardState;
     }
 
-    public void setBoards(List<Board> boards) {
-        this.boards = boards;
+    public void setBoardState(List<Board> boardState) {
+        this.boardState = boardState;
     }
 }

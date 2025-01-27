@@ -1,0 +1,19 @@
+Layered architecture
+
+Controllers
+Service
+Repository
+Models -- DONE
+
+controllers -> first point of contact -> APIs
+In the tictactoe, we dont have APIs, hence we will keep, methods to play the game inside the
+controller.
+
+Service -> logics for winner, draw etc.
+
+repository -> since its not persistent, we dont need to store anything, hence no repo needed.
+
+
+Strategy design ->
+1. Bot difficulty
+2. Winning strategy -> O(1)
