@@ -18,6 +18,7 @@ public class EasyBotPlayingStrategy implements BotPlayingStrategy{
                     move = new Move(cell, player);
                     game.getMoves().add(move);
                     game.getBoardState().add(board.clone());
+                    return move;
                 }
             }
         }

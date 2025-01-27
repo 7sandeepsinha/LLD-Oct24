@@ -3,6 +3,7 @@ package projects.TicTacToe.controller;
 import projects.TicTacToe.model.*;
 import projects.TicTacToe.model.constants.GameState;
 import projects.TicTacToe.model.constants.PlayerType;
+import projects.TicTacToe.service.BoardService;
 import projects.TicTacToe.service.GameService;
 import projects.TicTacToe.service.PlayerService;
 
@@ -16,15 +17,17 @@ public class GameController {
     private Scanner sc;
     private PlayerService playerService;
     private GameService gameService;
+    private BoardService boardService;
 
-    public GameController(PlayerService playerService, GameService gameService) {
+    public GameController(PlayerService playerService, GameService gameService, BoardService boardService) {
         this.sc = new Scanner(System.in);
         this.gameService = gameService;
         this.playerService = playerService;
+        this.boardService = boardService;
     }
 
     public List<Player> generatePlayerList(int playerCount){
-        System.out.println("Please enter 1 for BOT and 0 for HUMAN");
+        System.out.println("Please enter 1 if you want a bot in the game, else 0");
         int botCheck = sc.nextInt();
         List<Player> players = new ArrayList<>();
 
@@ -38,9 +41,9 @@ public class GameController {
 
         for(int i=0;i<playerCount;i++){
             System.out.println("Enter the name for the player");
-            String playerName = sc.nextLine();
+            String playerName = sc.next();
             System.out.println("Enter the symbol for player : " + playerName);
-            char symbol = sc.nextLine().charAt(0);
+            char symbol = sc.next().charAt(0);
             Player player = playerService.createPlayer(playerName, symbol);
             players.add(player);
         }
@@ -57,13 +60,12 @@ public class GameController {
             //TODO: validate row and column before executing the move
             return gameService.executeMove(player, game, row, col);
         } else {
-            return null;
+            return gameService.executeMove(player, game);
         }
     }
 
-    public GameState checkWinner(Board board, Move move){
-        // send game state as per status, winner, in progress or draw
-        return null;
+    public GameState checkWinner(Game game, Move move){
+        return gameService.checkWinner(game, move);
     }
 
     public Game undo(int moves, Game game){
@@ -75,5 +77,9 @@ public class GameController {
     }
 
     public void replayGame(Game game){
+    }
+
+    public void displayBoard(Game game){
+        boardService.displayBoard(game.getBoard());
     }
 }

@@ -17,3 +17,12 @@ repository -> since its not persistent, we dont need to store anything, hence no
 Strategy design ->
 1. Bot difficulty
 2. Winning strategy -> O(1)
+
+Homework ->
+1. Complete all TODOs mentioned in the code
+2. Complete undo logic with winner check update.
+3. Complete replay logic
+4. Test all possible scenarios, whether they are working fine or not.
+5. Convert Game class into Game builder.
+
+31st JAN -> DONE

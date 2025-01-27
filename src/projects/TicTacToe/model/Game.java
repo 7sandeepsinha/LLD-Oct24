@@ -2,6 +2,7 @@ package projects.TicTacToe.model;
 
 import projects.TicTacToe.model.constants.GameState;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -12,6 +13,14 @@ public class Game {
     private Player winner;
     private List<Move> moves;
     private List<Board> boardState;
+
+    public Game(Board board, List<Player> players) {
+        this.board = board;
+        this.players = players;
+        this.gameState = GameState.YET_TO_START;
+        this.moves = new ArrayList<>();
+        this.boardState = new ArrayList<>();
+    }
 
     public Board getBoard() {
         return board;
