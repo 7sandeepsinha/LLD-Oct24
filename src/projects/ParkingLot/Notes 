@@ -3,3 +3,13 @@ If the data is present, update it
 If its not present, insert it
 
 update() != upsert()
+
+------------------
+repository -> DB
+service -> business logic
+controller -> point of contact
+
+client <-> controller <-> service <-> repo
+
+Controller - depends -> services
+Service - depends -> repository
