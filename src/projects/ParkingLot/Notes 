@@ -1,0 +1,5 @@
+Upsert -> insert or update
+If the data is present, update it
+If its not present, insert it
+
+update() != upsert()
