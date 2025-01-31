@@ -17,6 +17,8 @@ public class ParkingLotController {
     }
 
     public ParkingTicket generateTicket(String vehicleNumber, ParkingSpotTier parkingSpotTier, int entryGateId){
+        //if vehicle details are not present, take user input
+        // call generateTicket(vehicle vehicle,-----)
         return null;
     }
 

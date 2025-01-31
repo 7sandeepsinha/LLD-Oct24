@@ -35,3 +35,38 @@ Step 3 -> Controllers only contain validations for user input, and on business l
           So we put business logic in respective service classes.
 Step 4 -> For some business logic, strategy design pattern, so wrote them inside service package
 Step 5 -> using the methods from controller, we complete the game running logic.
+
+
+REPLAY
+
+option 1-
+B1 B2 B3 B4 B5 B6 B7 B8 B9 B10
+
+undo - B1 B2 B3 B4 B5
+game after undo - B11 B12 B13 B14 B15 B16 B17 B18 B19 B20
+
+replay -  B1 B2 B3 B4 B5 B11 B12 B13 B14 B15 B16 B17 B18 B19 B20
+
+option 2 -
+B1 B2 B3 B4 B5 B6 B7 B8 B9 B10
+
+undo - B1 B2 B3 B4 B5
+game after undo - B11 B12 B13 B14 B15 B16 B17 B18 B19 B20
+
+replay - B1 B2 B3 B4 B5 B6 B7 B8 B9 B10 undo [B5] B11 B12 B13 B14 B15 B16 B17 B18 B19 B20
+
+undo times == number of players
+
+
+
+2 Players
+
+A1 B1 A2 B2 A3 B3 A4 B4 B[undo 3]
+
+after undo - A1 B1 A2 B2 A3
+
+game flow - A1 B1 A2 B2 A3 A4 B4 A5 A[undo 4]
+
+after undo - A1 B1 A2 B2
+
+game flow - A1 B1 A2 B2 B6 A7 ---------
