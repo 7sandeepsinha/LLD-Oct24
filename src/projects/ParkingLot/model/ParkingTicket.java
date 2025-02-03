@@ -1,14 +1,27 @@
 package projects.ParkingLot.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
 
 public class ParkingTicket {
     private int id;
     private ParkingSpot parkingSpot;
-    private Date entryTime;
+    private LocalDateTime entryTime;
     private Vehicle vehicle;
     private ParkingGate gate;
     private Operator operator;
+
+    @Override
+    public String toString() {
+        return "ParkingTicket{" +
+                "parkingSpot=" + parkingSpot.getParkingSpotNumber() +
+                ", entryTime=" + entryTime +
+                ", vehicle=" + vehicle.getVehicleNumber() +
+                ", gate=" + gate.getGateNumber() +
+                ", operator=" + operator.getName() +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -26,11 +39,11 @@ public class ParkingTicket {
         this.parkingSpot = parkingSpot;
     }
 
-    public Date getEntryTime() {
+    public LocalDateTime getEntryTime() {
         return entryTime;
     }
 
-    public void setEntryTime(Date entryTime) {
+    public void setEntryTime(LocalDateTime entryTime) {
         this.entryTime = entryTime;
     }
 

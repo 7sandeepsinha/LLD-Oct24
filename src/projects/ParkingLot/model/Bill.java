@@ -1,10 +1,11 @@
 package projects.ParkingLot.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Bill {
     private int id;
-    private Date exitTime;
+    private LocalDateTime exitTime;
     private ParkingTicket parkingTicket;
     private double amount;
     private Payment payment;
@@ -35,11 +36,11 @@ public class Bill {
         this.id = id;
     }
 
-    public Date getExitTime() {
+    public LocalDateTime getExitTime() {
         return exitTime;
     }
 
-    public void setExitTime(Date exitTime) {
+    public void setExitTime(LocalDateTime exitTime) {
         this.exitTime = exitTime;
     }
 

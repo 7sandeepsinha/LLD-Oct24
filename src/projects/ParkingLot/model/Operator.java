@@ -5,6 +5,11 @@ public class Operator {
     private String name;
     private String email;
 
+    public Operator(int id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 
     public int getId() {
         return id;

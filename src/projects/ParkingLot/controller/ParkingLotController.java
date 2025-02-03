@@ -1,12 +1,20 @@
 package projects.ParkingLot.controller;
 
 import projects.ParkingLot.model.Bill;
+import projects.ParkingLot.model.ParkingLot;
 import projects.ParkingLot.model.ParkingTicket;
 import projects.ParkingLot.model.Vehicle;
 import projects.ParkingLot.model.constant.ParkingSpotTier;
 import projects.ParkingLot.model.constant.VehicleType;
+import projects.ParkingLot.service.ParkingLotService;
 
 public class ParkingLotController {
+
+    private ParkingLotService parkingLotService;
+
+    public ParkingLotController(ParkingLotService parkingLot) {
+        this.parkingLotService = parkingLot;
+    }
 
     public boolean isSlotAvailable(){
         return true;
@@ -14,16 +22,6 @@ public class ParkingLotController {
 
     public boolean isSlotAvailable(VehicleType vehicleType){ // TODO: complete this method
         return true;
-    }
-
-    public ParkingTicket generateTicket(String vehicleNumber, ParkingSpotTier parkingSpotTier, int entryGateId){
-        //if vehicle details are not present, take user input
-        // call generateTicket(vehicle vehicle,-----)
-        return null;
-    }
-
-    public ParkingTicket generateTicket(Vehicle vehicle, ParkingSpotTier parkingSpotTier, int entryGateId){
-        return null;
     }
 
     public Bill generateBill(int ticketId, int exitGateId){
@@ -34,8 +32,14 @@ public class ParkingLotController {
         return null;
     }
 
-    public void displayParkingLotStatus(){
-        return;
+
+    public ParkingLot initialiseParkingLot(int noOfFloors, int noOfSpotInAFloor){
+        //TODO: add validations for practical range of noOfFloors, and noOfSpotInAFloor
+        return parkingLotService.initialiseParkingLot(noOfFloors, noOfSpotInAFloor);
+    }
+
+    public void displayParkingLot(ParkingLot parkingLot){
+        parkingLotService.showParkingLot(parkingLot);
     }
 
 }

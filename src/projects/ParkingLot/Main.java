@@ -4,9 +4,12 @@ import projects.ParkingLot.controller.BillController;
 import projects.ParkingLot.controller.ParkingLotController;
 import projects.ParkingLot.controller.TicketController;
 import projects.ParkingLot.model.Bill;
+import projects.ParkingLot.model.ParkingLot;
 import projects.ParkingLot.model.ParkingTicket;
 import projects.ParkingLot.model.constant.ParkingSpotTier;
 import projects.ParkingLot.repository.*;
+import projects.ParkingLot.service.ParkingLotService;
+import projects.ParkingLot.service.TicketService;
 
 import java.util.Scanner;
 
@@ -20,9 +23,17 @@ public class Main {
         ParkingTicketRepository parkingTicketRepository = new ParkingTicketRepository();
         VehicleRepository vehicleRepository = new VehicleRepository();
 
-        ParkingLotController parkingLotController = new ParkingLotController();
-        TicketController ticketController = new TicketController();
+        ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository,
+                parkingFloorRepository, parkingSpotRepository, parkingGateRepository);
+        TicketService ticketService = new TicketService(parkingGateRepository,
+                parkingTicketRepository, parkingSpotRepository, parkingLotRepository, vehicleRepository);
+
+        ParkingLotController parkingLotController = new ParkingLotController(parkingLotService);
+        TicketController ticketController = new TicketController(ticketService);
         BillController billController = new BillController();
+
+        ParkingLot parkingLot = parkingLotController.initialiseParkingLot(2, 5);
+        parkingLotController.displayParkingLot(parkingLot);
 
         Scanner sc = new Scanner(System.in);
 
@@ -37,9 +48,9 @@ public class Main {
                 if(parkingLotController.isSlotAvailable()){
                     System.out.println("Please enter vehicle number");
                     String number = sc.next();
-                    ParkingTicket ticket = parkingLotController.generateTicket(number, ParkingSpotTier.NORMAL, 1);
+                    ParkingTicket ticket = ticketController.generateTicket(parkingLot, number, ParkingSpotTier.NORMAL, 1);
                     ticketController.displayTicketDetails(ticket);
-                    parkingLotController.displayParkingLotStatus();
+                    parkingLotController.displayParkingLot(parkingLot);
                 } else {
                     System.out.println("Parking Lot is full, please try again later");
                 }
@@ -52,7 +63,7 @@ public class Main {
                 int paymentMode = sc.nextInt();
                 //generate bill object with payment
                 //display bill
-                parkingLotController.displayParkingLotStatus();
+                parkingLotController.displayParkingLot(parkingLot);
             }
         }
     }
