@@ -12,6 +12,19 @@ public class Bill {
     private ParkingGate exitGate;
     private Operator operator;
 
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "id=" + id +
+                ", exitTime=" + exitTime +
+                ", parkingTicket=" + parkingTicket +
+                ", amount=" + amount +
+                ", payment=" + payment +
+                ", exitGate=" + exitGate +
+                ", operator=" + operator +
+                '}';
+    }
+
     public ParkingGate getExitGate() {
         return exitGate;
     }

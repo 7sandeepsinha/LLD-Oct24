@@ -21,4 +21,5 @@ public class TicketController {
     public ParkingTicket generateTicket(ParkingLot parkingLot, String vehicleNumber, ParkingSpotTier parkingSpotTier, int entryGateId){
         return ticketService.generateTicket(vehicleNumber,parkingLot, parkingSpotTier, entryGateId);
     }
+
 }

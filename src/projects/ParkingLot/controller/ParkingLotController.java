@@ -16,17 +16,14 @@ public class ParkingLotController {
         this.parkingLotService = parkingLot;
     }
 
-    public boolean isSlotAvailable(){
-        return true;
+    public boolean isSlotAvailable(ParkingLot parkingLot){
+        return parkingLot.getAvailableSlots() > 0;
     }
 
     public boolean isSlotAvailable(VehicleType vehicleType){ // TODO: complete this method
         return true;
     }
 
-    public Bill generateBill(int ticketId, int exitGateId){
-        return null;
-    }
 
     public Bill billPayment(Bill bill){
         return null;

@@ -8,6 +8,7 @@ import projects.ParkingLot.model.ParkingLot;
 import projects.ParkingLot.model.ParkingTicket;
 import projects.ParkingLot.model.constant.ParkingSpotTier;
 import projects.ParkingLot.repository.*;
+import projects.ParkingLot.service.BillService;
 import projects.ParkingLot.service.ParkingLotService;
 import projects.ParkingLot.service.TicketService;
 
@@ -27,12 +28,14 @@ public class Main {
                 parkingFloorRepository, parkingSpotRepository, parkingGateRepository);
         TicketService ticketService = new TicketService(parkingGateRepository,
                 parkingTicketRepository, parkingSpotRepository, parkingLotRepository, vehicleRepository);
+        BillService billService = new BillService(parkingTicketRepository,
+                billRepository, parkingGateRepository, parkingSpotRepository, parkingLotRepository);
 
         ParkingLotController parkingLotController = new ParkingLotController(parkingLotService);
         TicketController ticketController = new TicketController(ticketService);
-        BillController billController = new BillController();
+        BillController billController = new BillController(billService);
 
-        ParkingLot parkingLot = parkingLotController.initialiseParkingLot(2, 5);
+        ParkingLot parkingLot = parkingLotController.initialiseParkingLot(1, 3);
         parkingLotController.displayParkingLot(parkingLot);
 
         Scanner sc = new Scanner(System.in);
@@ -45,7 +48,7 @@ public class Main {
             System.out.println("2. Exit vehicle");
             int option = sc.nextInt();
             if(option == 1){
-                if(parkingLotController.isSlotAvailable()){
+                if(parkingLotController.isSlotAvailable(parkingLot)){
                     System.out.println("Please enter vehicle number");
                     String number = sc.next();
                     ParkingTicket ticket = ticketController.generateTicket(parkingLot, number, ParkingSpotTier.NORMAL, 1);
@@ -57,12 +60,8 @@ public class Main {
             } else {
                 System.out.println("Please enter your ticketId");
                 int ticketId = sc.nextInt();
-                Bill bill = parkingLotController.generateBill(ticketId, 2);
+                Bill bill = billController.generateBill(parkingLot, ticketId, 2);
                 billController.displayBillDetails(bill);
-                System.out.println("Choose a payment mode - 1. Cash and 2. Online");
-                int paymentMode = sc.nextInt();
-                //generate bill object with payment
-                //display bill
                 parkingLotController.displayParkingLot(parkingLot);
             }
         }
