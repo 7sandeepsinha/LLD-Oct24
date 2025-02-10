@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         BillRepository billRepository = new BillRepository();
-        ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
+        ParkingLotRepository parkingLotRepository = new ParkingLotRepository(); // initialised a parkingLotRepo object, available for injection
         ParkingGateRepository parkingGateRepository = new ParkingGateRepository();
         ParkingFloorRepository parkingFloorRepository = new ParkingFloorRepository();
         ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
@@ -25,7 +25,7 @@ public class Main {
         VehicleRepository vehicleRepository = new VehicleRepository();
 
         ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository,
-                parkingFloorRepository, parkingSpotRepository, parkingGateRepository);
+                parkingFloorRepository, parkingSpotRepository, parkingGateRepository); // initialising parkingLotService, ie, while object creation the dependency will be injected
         TicketService ticketService = new TicketService(parkingGateRepository,
                 parkingTicketRepository, parkingSpotRepository, parkingLotRepository, vehicleRepository);
         BillService billService = new BillService(parkingTicketRepository,

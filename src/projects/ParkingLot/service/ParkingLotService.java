@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ParkingLotService {
 
-    private ParkingLotRepository parkingLotRepository;
+    private ParkingLotRepository parkingLotRepository; // mentioning the requirement for dependency
     private ParkingFloorRepository parkingFloorRepository;
     private ParkingSpotRepository parkingSpotRepository;
     private ParkingGateRepository parkingGateRepository;
